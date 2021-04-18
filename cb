@@ -1,0 +1,207 @@
+#include<stdio.h>
+
+#include<conio.h>
+
+#include<string.h>
+
+#include<process.h>
+
+char a[20],b[50],c[50],ch;
+
+int i=0,n;
+
+void sender();
+
+void receiver();
+
+void main()
+
+{
+
+clrscr();
+
+sender();
+
+receiver();
+
+getch();
+
+}
+
+void sender()
+
+{
+
+int j=0,pos;
+
+printf("\n\n Sender side \n\n");
+
+printf("Enter string : ");
+
+scanf("%s",&a);
+
+n=strlen(a);
+
+printf("\n Enter position : ");
+
+scanf("%d",&pos);
+
+label: if(pos>n)
+
+{
+
+printf("\n Invalid position, Enter again : ");
+
+scanf("%d",&pos);
+
+goto label;
+
+}
+
+printf("\n Enter the character : ");
+
+ch=getche();
+
+b[0]='d';
+
+b[1]='l';
+
+b[2]='e';
+
+b[3]='s';
+
+b[4]='t';
+
+b[5]='x';
+
+j=6;
+
+while(i<n)
+
+{
+
+if(i==pos-1)
+
+{
+
+b[j]='d';
+
+b[j+1]='l';
+
+b[j+2]='e';
+
+b[j+3]=ch;
+
+b[j+4]='d';
+
+b[j+5]='l';
+
+b[j+6]='e';
+
+j=j+7;
+
+}
+
+if(a[i]=='d' && a[i+1]=='l' && a[i+2]=='e')
+
+{
+
+b[j]='d';
+
+b[j+1]='l';
+
+b[j+2]='e';
+
+j=j+3;
+
+}
+
+b[j]=a[i];
+
+i++;
+
+j++;
+
+}
+
+b[j]='d';
+
+b[j+1]='l';
+
+b[j+2]='e';
+
+b[j+3]='e';
+
+b[j+4]='t';
+
+b[j+5]='x';
+
+b[j+6]='\0';
+
+printf("\nframe after stuffing : %s" ,b);
+
+}
+
+void receiver()
+
+{
+
+int j=6;
+
+printf("\n\n\n\n Receiver side\n\n");
+
+printf("\nThe data came from sender side is : %s",b);
+
+n=strlen(b);
+
+while(j<n-6)
+
+{
+
+if(b[j]=='d' && b[j+1]=='l' && b[j+2]=='e')
+
+{
+
+if(b[j+3]=='d' && b[j+4]=='l' && b[j+5]=='e')
+
+{
+
+c[i]=b[j+3];
+
+c[i+1]=b[j+4];
+
+c[i+2]=b[j+5];
+
+i = i+3;
+
+j = j+6;
+
+}
+
+else if(b[j+4]=='d' && b[j+5]=='l' && b[j+6]=='e')
+
+{
+
+j = j+7;
+
+}
+
+}
+
+else
+
+{
+
+c[i]=b[j];
+
+i++;
+
+j++;
+
+}
+
+}
+
+printf("\n\nOriginal data : %s",c);
+
+}
